@@ -1,6 +1,6 @@
 general:
     artifacts:
-        - /home/ubuntu/EspressoTestAutomation/app/build/outputs/apk
+        - /home/ubuntu/EspressoTestAutomation/AndroidDemo/app/build/outputs/apk/debug
 
 machine:
     environment:
