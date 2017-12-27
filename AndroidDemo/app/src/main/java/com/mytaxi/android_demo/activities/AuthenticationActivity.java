@@ -67,6 +67,9 @@ public class AuthenticationActivity extends AppCompatActivity {
     private void attemptLogin() {
         final String username = mEditTextUsername.getText().toString();
         final String password = mEditTextPassword.getText().toString();
+        if(username.equals("") && password.equals("")) {
+            mEditTextPassword.setText("user name should not be blank");
+        }
         mHttpClient.fetchUser(RANDOM_USER_SEED, new HttpClient.UserCallback() {
             @Override
             public void run() {

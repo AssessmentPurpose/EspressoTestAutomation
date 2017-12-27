@@ -39,6 +39,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withHint;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.mytaxi.android_demo.ApplicationUtility.clearAppCache;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.AllOf.allOf;
@@ -51,22 +52,6 @@ public class EndToEndFunctionalTest {
 
     @Rule
     public ActivityTestRule<MainActivity> loginRule = new ActivityTestRule<>(MainActivity.class, true, false);
-
-    public void clearAppCache() {
-        try
-        {
-            File root = InstrumentationRegistry.getTargetContext().getFilesDir().getParentFile();
-            String[] sharedPreferencesFileNames = new File(root, "shared_prefs").list();
-            if(sharedPreferencesFileNames.length > 0) {
-                for (String fileName : sharedPreferencesFileNames) {
-                    InstrumentationRegistry.getTargetContext().getSharedPreferences(fileName.replace(".xml", ""), Context.MODE_PRIVATE).edit().clear().commit();
-                }
-            }
-        }
-        catch (Exception e) {
-            System.out.println("Trying to clear cache, but cannot find it");
-        }
-    }
 
     public void launchLoginScreen() {
         Intent loginIntent = new Intent(getTargetContext(), MainActivity.class);
